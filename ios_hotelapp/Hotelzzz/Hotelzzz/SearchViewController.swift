@@ -56,6 +56,17 @@ class SearchViewController: UIViewController, WKScriptMessageHandler {
                 "window.JSAPI.runHotelSearch(\(json))",
                 completionHandler: nil)
         case "HOTEL_API_HOTEL_SELECTED":
+            guard let body = message.body as? [String: Any], let result = body["result"] as? [String: Any] else { return }
+            let hotel: Hotel
+            do {
+                hotel = try result.get(result)
+            }
+            catch {
+                //Add better error handling
+                fatalError("Unable to parse selected hotel")
+            }
+            // Delete me
+            print(hotel)
             self.performSegue(withIdentifier: "hotel_details", sender: nil)
         default: break
         }

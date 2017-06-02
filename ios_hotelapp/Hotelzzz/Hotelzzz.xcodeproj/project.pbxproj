@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E0701A281EE102C700217ECA /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0701A271EE102C700217ECA /* Search.swift */; };
+		E0701A2D1EE1053400217ECA /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0701A2C1EE1053400217ECA /* JSON.swift */; };
 		F222BCD61E81E72500CE0EB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F222BCD51E81E72500CE0EB2 /* AppDelegate.swift */; };
 		F222BCD81E81E72500CE0EB2 /* SearchFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F222BCD71E81E72500CE0EB2 /* SearchFormViewController.swift */; };
 		F222BCDB1E81E72500CE0EB2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F222BCD91E81E72500CE0EB2 /* Main.storyboard */; };
@@ -30,6 +32,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E0701A271EE102C700217ECA /* Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
+		E0701A2C1EE1053400217ECA /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		F222BCD21E81E72500CE0EB2 /* Hotelzzz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hotelzzz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F222BCD51E81E72500CE0EB2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F222BCD71E81E72500CE0EB2 /* SearchFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFormViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +68,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E0701A291EE102CE00217ECA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E0701A271EE102C700217ECA /* Search.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		E0701A2A1EE102E300217ECA /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F222BCF71E83175000CE0EB2 /* SearchViewController.swift */,
+				F222BCD71E81E72500CE0EB2 /* SearchFormViewController.swift */,
+				F222BCF51E830D4C00CE0EB2 /* DatePickerViewController.swift */,
+				F222BCF91E83235F00CE0EB2 /* HotelViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		E0701A2B1EE104A700217ECA /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				F27251341E95A60E00222BC8 /* UIViewController+Extensions.swift */,
+				E0701A2C1EE1053400217ECA /* JSON.swift */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
 		F222BCC91E81E72400CE0EB2 = {
 			isa = PBXGroup;
 			children = (
@@ -86,15 +118,13 @@
 			isa = PBXGroup;
 			children = (
 				F222BCD51E81E72500CE0EB2 /* AppDelegate.swift */,
-				F222BCD71E81E72500CE0EB2 /* SearchFormViewController.swift */,
-				F222BCF51E830D4C00CE0EB2 /* DatePickerViewController.swift */,
-				F222BCF71E83175000CE0EB2 /* SearchViewController.swift */,
-				F222BCF91E83235F00CE0EB2 /* HotelViewController.swift */,
+				E0701A2A1EE102E300217ECA /* Controllers */,
+				E0701A291EE102CE00217ECA /* Model */,
+				E0701A2B1EE104A700217ECA /* Utilities */,
 				F222BCD91E81E72500CE0EB2 /* Main.storyboard */,
 				F222BCDC1E81E72500CE0EB2 /* Assets.xcassets */,
 				F222BCDE1E81E72500CE0EB2 /* LaunchScreen.storyboard */,
 				F222BCE11E81E72500CE0EB2 /* Info.plist */,
-				F27251341E95A60E00222BC8 /* UIViewController+Extensions.swift */,
 			);
 			path = Hotelzzz;
 			sourceTree = "<group>";
@@ -219,6 +249,8 @@
 				F222BCF61E830D4C00CE0EB2 /* DatePickerViewController.swift in Sources */,
 				F27251351E95A60E00222BC8 /* UIViewController+Extensions.swift in Sources */,
 				F222BCFA1E83235F00CE0EB2 /* HotelViewController.swift in Sources */,
+				E0701A281EE102C700217ECA /* Search.swift in Sources */,
+				E0701A2D1EE1053400217ECA /* JSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

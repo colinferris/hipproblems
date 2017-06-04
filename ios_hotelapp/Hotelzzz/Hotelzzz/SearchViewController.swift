@@ -12,7 +12,8 @@ import UIKit
 
 class SearchViewController: UIViewController {
     let webControllerConfig: WKWebViewConfiguration
-    var currentSearch: Search!
+    private(set) var currentSearch: Search!
+    private var selectedHotel: Hotel?
     lazy var eventController: APIEventController = {
        return APIEventController(eventHandler: self.handleEvent)
     }()
@@ -43,7 +44,8 @@ class SearchViewController: UIViewController {
             let json = try! currentSearch.toJSON().jsonStringify()
             let javascript = "window.JSAPI.runHotelSearch(\(json))"
             self.webView.evaluateJavaScript(javascript, completionHandler: nil)
-        case .selectedHotel(_):
+        case .selectedHotel(let hotel):
+            self.selectedHotel = hotel
             self.performSegue(withIdentifier: "hotel_details", sender: nil)
         default:
             break
@@ -53,6 +55,12 @@ class SearchViewController: UIViewController {
     func search(location: String, dateStart: Date, dateEnd: Date) {
         currentSearch = Search(location: location, dateStart: dateStart, dateEnd: dateEnd)
         webView.load(URLRequest(url: URL(string: "http://hipmunk.github.io/hipproblems/ios_hotelapp/")!))
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "hotel_details", let destination = segue.destination as? HotelViewController {
+            destination.hotel = selectedHotel
+        }
     }
 }
 

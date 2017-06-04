@@ -9,6 +9,7 @@
 import Foundation
 
 struct Search {
+
     let location: String
     let dateStart: Date
     let dateEnd: Date
@@ -19,11 +20,11 @@ struct Search {
         return formatter
     }()
     
-    func getJSON() throws -> String {
-        return try jsonStringify([
+    func toJSON() -> JSONDict {
+        return [
             "location": location,
             "dateStart": Search.dateFormatter.string(from: dateStart),
             "dateEnd": Search.dateFormatter.string(from: dateEnd)
-            ])
+        ]
     }
 }

@@ -10,66 +10,49 @@ import Foundation
 import WebKit
 import UIKit
 
-class SearchViewController: UIViewController, WKScriptMessageHandler {
-    private var _searchToRun: Search?
-
+class SearchViewController: UIViewController {
+    let webControllerConfig: WKWebViewConfiguration
+    var currentSearch: Search!
+    lazy var eventController: APIEventController = {
+       return APIEventController(eventHandler: self.handleEvent)
+    }()
     lazy var webView: WKWebView = {
-        let webView = WKWebView(frame: CGRect.zero, configuration: {
-            let config = WKWebViewConfiguration()
-            config.userContentController = {
-                let userContentController = WKUserContentController()
-                
-                // DECLARE YOUR MESSAGE HANDLERS HERE
-                userContentController.add(self, name: "API_READY")
-                userContentController.add(self, name: "HOTEL_API_HOTEL_SELECTED")
-                
-                return userContentController
-            }()
-            return config
-        }())
+        let webView = WKWebView(frame: CGRect.zero, configuration: self.webControllerConfig)
         webView.translatesAutoresizingMaskIntoConstraints = false
         webView.navigationDelegate = self
         
         self.view.addSubview(webView)
-        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[webView]|", options: [], metrics: nil, views: ["webView": webView]))
-        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[webView]|", options: [], metrics: nil, views: ["webView": webView]))
+        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[webView]|",
+                                                                options: [], metrics: nil, views: ["webView": webView]))
+        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[webView]|",
+                                                                options: [], metrics: nil, views: ["webView": webView]))
         return webView
     }()
     
-    func search(location: String, dateStart: Date, dateEnd: Date) {
-        _searchToRun = Search(location: location, dateStart: dateStart, dateEnd: dateEnd)
-        self.webView.load(URLRequest(url: URL(string: "http://hipmunk.github.io/hipproblems/ios_hotelapp/")!))
+    required init?(coder aDecoder: NSCoder) {
+        let config = WKWebViewConfiguration()
+        self.webControllerConfig = config
+        
+        super.init(coder: aDecoder)
+        config.userContentController = eventController.userContentController
     }
     
-    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        switch message.name {
-        case "API_READY":
-            guard let searchToRun = _searchToRun else { fatalError("Tried to load the page without having a search to run") }
-            let json: String
-            do {
-                json = try searchToRun.getJSON()
-            }
-            catch {
-                fatalError("Failed stringify search info")
-            }
-            self.webView.evaluateJavaScript(
-                "window.JSAPI.runHotelSearch(\(json))",
-                completionHandler: nil)
-        case "HOTEL_API_HOTEL_SELECTED":
-            guard let body = message.body as? [String: Any], let result = body["result"] as? [String: Any] else { return }
-            let hotel: Hotel
-            do {
-                hotel = try result.get(result)
-            }
-            catch {
-                //Add better error handling
-                fatalError("Unable to parse selected hotel")
-            }
-            // Delete me
-            print(hotel)
+    func handleEvent(_ event: APIEvent) {
+        switch event {
+        case .ready:
+            let json = try! currentSearch.toJSON().jsonStringify()
+            let javascript = "window.JSAPI.runHotelSearch(\(json))"
+            self.webView.evaluateJavaScript(javascript, completionHandler: nil)
+        case .selectedHotel(_):
             self.performSegue(withIdentifier: "hotel_details", sender: nil)
-        default: break
+        default:
+            break
         }
+    }
+    
+    func search(location: String, dateStart: Date, dateEnd: Date) {
+        currentSearch = Search(location: location, dateStart: dateStart, dateEnd: dateEnd)
+        webView.load(URLRequest(url: URL(string: "http://hipmunk.github.io/hipproblems/ios_hotelapp/")!))
     }
 }
 

@@ -14,18 +14,20 @@ enum JSONSerializationError: Error {
     case invalidType(key: String, expected: Any.Type, actual: Any)
 }
 
-func jsonStringify(_ obj: [AnyHashable: Any]) throws -> String {
-    let data = try JSONSerialization.data(withJSONObject: obj, options: [])
-    guard let json = String(data: data, encoding: .utf8) else {
-        throw JSONSerializationError.stringifyFailure
-    }
-    return json
-}
-
 typealias JSONDict = [String: Any]
 
 protocol Decodable {
     init(json: JSONDict) throws
+}
+
+extension Dictionary where Key == String, Value == Any {
+    func jsonStringify() throws -> String {
+        let data = try JSONSerialization.data(withJSONObject: self, options: [])
+        guard let json = String(data: data, encoding: .utf8) else {
+            throw JSONSerializationError.stringifyFailure
+        }
+        return json
+    }
 }
 
 extension Dictionary where Key == String, Value == Any {
@@ -55,4 +57,3 @@ extension Dictionary where Key == String, Value == Any {
         return try T.init(json: json)
     }
 }
-

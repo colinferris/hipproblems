@@ -16,7 +16,7 @@ enum ImageLoadError: Error {
 class HotelViewController: UIViewController {
     var hotel: Hotel!
     @IBOutlet var hotelNameLabel: UILabel!
-    @IBOutlet weak var hotelImageView: UIImageView!
+    @IBOutlet weak var hotelPhotoView: RoundedImageView!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     
@@ -24,7 +24,7 @@ class HotelViewController: UIViewController {
         super.viewWillAppear(animated)
         hotelNameLabel.text = hotel.name
         addressLabel.text = hotel.address
-        priceLabel.text = "$\(hotel.price)"
+        priceLabel.text = hotel.price.asCurrency()
         
         do { try loadImage(from: hotel.imageUrl) }
         catch ImageLoadError.badURL(let location) {
@@ -42,10 +42,29 @@ class HotelViewController: UIViewController {
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             if error == nil, let data = data {
                 DispatchQueue.main.async {
-                    self.hotelImageView.image = UIImage(data: data)
-                    self.hotelImageView.layer.cornerRadius = (self.hotelImageView.image?.size.width)! / 2
+                    self.hotelPhotoView.image = UIImage(data: data)
                 }
             }
             }.resume()
+    }
+}
+
+extension Double {
+    func asCurrency() -> String? {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .currency
+        numberFormatter.locale = Locale.current
+        numberFormatter.maximumFractionDigits = 0
+        return numberFormatter.string(from: NSNumber(value: self))
+    }
+}
+
+@IBDesignable
+class RoundedImageView: UIImageView {
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        let radius: CGFloat = self.bounds.size.width / 2.0
+        self.layer.cornerRadius = radius
+        self.clipsToBounds = true
     }
 }

@@ -15,7 +15,7 @@ enum APIEvent {
     /// HOTEL_API_SEARCH_READY
     case searchReady
     /// HOTEL_API_RESULTS_READY
-    case resultsReady
+    case resultsReady(Int)
     /// HOTEL_API_HOTEL_SELECTED
     case selectedHotel(Hotel)
 }
@@ -42,7 +42,11 @@ class APIEventController: NSObject, WKScriptMessageHandler {
         case "HOTEL_API_SEARCH_READY":
             eventHandler(.searchReady)
         case "HOTEL_API_RESULTS_READY":
-            eventHandler(.resultsReady)
+            guard let body = message.body as? JSONDict,
+                let results = body["results"] as? [JSONDict], results.count > 0 else {
+                    return
+            }
+            eventHandler(.resultsReady(results.count))
         case "HOTEL_API_HOTEL_SELECTED":
             guard let body = message.body as? JSONDict, let result = body["result"] as? JSONDict else { return }
             let hotel: Hotel

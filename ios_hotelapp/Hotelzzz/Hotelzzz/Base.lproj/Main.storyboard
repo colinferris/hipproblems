@@ -219,47 +219,46 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="J8A-TO-Y3b">
-                                <rect key="frame" x="10" y="74" width="355" height="191.5"/>
+                                <rect key="frame" x="16" y="204" width="343" height="81.5"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample_hotel_thumbnail" translatesAutoresizingMaskIntoConstraints="NO" id="Auv-29-4jw">
-                                        <rect key="frame" x="0.0" y="0.0" width="355" height="100"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="kpu-5n-l2o"/>
-                                        </constraints>
-                                    </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" text="Hotel California" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T09-hq-wWh">
-                                        <rect key="frame" x="0.0" y="110" width="355" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 Infinite Loop, Cupertino, CA 95014" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rAt-LC-Z7F">
-                                        <rect key="frame" x="0.0" y="140.5" width="355" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="30.5" width="343" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" text="$200" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z6c-FE-g7a">
-                                        <rect key="frame" x="0.0" y="171" width="355" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="61" width="343" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample_hotel_thumbnail" translatesAutoresizingMaskIntoConstraints="NO" id="Auv-29-4jw" customClass="RoundedImageView" customModule="Hotelzzz" customModuleProvider="target">
+                                <rect key="frame" x="137.5" y="94" width="100" height="100"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="J8A-TO-Y3b" firstAttribute="top" secondItem="TMd-ax-uEb" secondAttribute="bottom" constant="10" id="CPa-SS-Xgs"/>
-                            <constraint firstAttribute="trailing" secondItem="J8A-TO-Y3b" secondAttribute="trailing" constant="10" id="nv0-eN-3C2"/>
-                            <constraint firstItem="J8A-TO-Y3b" firstAttribute="leading" secondItem="edA-w1-8bO" secondAttribute="leading" constant="10" id="yeK-vR-jbN"/>
+                            <constraint firstItem="Auv-29-4jw" firstAttribute="centerX" secondItem="edA-w1-8bO" secondAttribute="centerX" id="XMX-jh-5BE"/>
+                            <constraint firstItem="Auv-29-4jw" firstAttribute="top" secondItem="TMd-ax-uEb" secondAttribute="bottom" constant="30" id="l0O-Xd-utd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="J8A-TO-Y3b" secondAttribute="trailing" id="mqo-pX-fUy"/>
+                            <constraint firstItem="J8A-TO-Y3b" firstAttribute="leading" secondItem="edA-w1-8bO" secondAttribute="leadingMargin" id="pNZ-sh-Jhm"/>
+                            <constraint firstItem="J8A-TO-Y3b" firstAttribute="top" secondItem="Auv-29-4jw" secondAttribute="bottom" constant="10" id="rbT-55-oRn"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Hotel Details" id="BkP-pu-yFu"/>
                     <connections>
                         <outlet property="addressLabel" destination="rAt-LC-Z7F" id="Rwx-va-hqi"/>
-                        <outlet property="hotelImageView" destination="Auv-29-4jw" id="nVG-Zp-KWw"/>
                         <outlet property="hotelNameLabel" destination="T09-hq-wWh" id="22U-Gg-bKN"/>
+                        <outlet property="hotelPhotoView" destination="Auv-29-4jw" id="U3w-eR-MrF"/>
                         <outlet property="priceLabel" destination="z6c-FE-g7a" id="G4d-HO-I3P"/>
                     </connections>
                 </viewController>

@@ -15,7 +15,7 @@ class SearchViewController: UIViewController {
     private(set) var currentSearch: Search!
     private var selectedHotel: Hotel?
     lazy var eventController: APIEventController = {
-       return APIEventController(eventHandler: self.handleEvent)
+        return APIEventController(eventHandler: self.handleEvent)
     }()
     lazy var webView: WKWebView = {
         let webView = WKWebView(frame: CGRect.zero, configuration: self.webControllerConfig)
@@ -47,6 +47,12 @@ class SearchViewController: UIViewController {
         case .selectedHotel(let hotel):
             self.selectedHotel = hotel
             self.performSegue(withIdentifier: "hotel_details", sender: nil)
+        case .resultsReady(let numResults):
+            DispatchQueue.main.async {
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.title = "\(numResults) Results"
+                })
+            }
         default:
             break
         }

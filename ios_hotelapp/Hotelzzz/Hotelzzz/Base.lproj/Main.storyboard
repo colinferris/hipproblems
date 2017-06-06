@@ -167,13 +167,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="UO8-dH-x7J"/>
                                     <barButtonItem title="Sort" id="lxx-Tg-6vH">
                                         <connections>
-                                            <segue destination="7ab-sq-2R9" kind="presentation" identifier="select_sort" id="SU9-ek-WIu"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="0CR-Yk-ZI1"/>
-                                    <barButtonItem title="Filter" id="wN0-Jj-sCs">
-                                        <connections>
-                                            <segue destination="5nq-cZ-lSb" kind="presentation" identifier="select_filters" id="dGE-V5-blT"/>
+                                            <action selector="sortHotels:" destination="mfQ-fo-jKR" id="KIE-Ra-Z1A"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="hTu-Er-Ce0"/>
@@ -191,7 +185,13 @@
                             <constraint firstAttribute="trailing" secondItem="QZq-Qq-wMb" secondAttribute="trailing" id="uyC-fZ-Yyi"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Searching..." id="z0V-Hf-7Gn"/>
+                    <navigationItem key="navigationItem" title="Searching..." id="z0V-Hf-7Gn">
+                        <barButtonItem key="rightBarButtonItem" title="Filter" id="Qcm-qy-Ixh">
+                            <connections>
+                                <segue destination="5nq-cZ-lSb" kind="presentation" identifier="select_filters" id="cT7-F4-RRd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="container" destination="z6s-QR-sSJ" id="Fwi-2k-hup"/>
                         <segue destination="hMw-It-0eG" kind="show" identifier="hotel_details" id="jwc-WB-JAt"/>
@@ -353,73 +353,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qxF-xb-BLV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1135" y="-23"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="cUw-8V-etF">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7ab-sq-2R9" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5HC-o4-eG9">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Tri-Xg-ksE" kind="relationship" relationship="rootViewController" id="15q-LB-8gU"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="65e-tC-Iz8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1535" y="-656"/>
-        </scene>
-        <!--Table View Controller-->
-        <scene sceneID="QhS-Yq-gz3">
-            <objects>
-                <tableViewController id="Tri-Xg-ksE" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="LGx-RS-jLE">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <sections>
-                            <tableViewSection id="Jgi-97-N7l">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="AU7-7m-uwL">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AU7-7m-uwL" id="CJi-9u-azd">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="o2t-KY-ONd">
-                                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="o2t-KY-ONd" id="xx6-jx-aSW">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="3Bt-4G-MRX">
-                                        <rect key="frame" x="0.0" y="88" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3Bt-4G-MRX" id="fbZ-Ev-lzS">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
-                        <connections>
-                            <outlet property="dataSource" destination="Tri-Xg-ksE" id="Vb8-mU-CKq"/>
-                            <outlet property="delegate" destination="Tri-Xg-ksE" id="O39-MY-3lz"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="XP8-rW-zHV"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dKD-ao-cWS" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2478" y="-656"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="CmB-aN-VZ3">

@@ -21,14 +21,9 @@ class SearchViewController: UIViewController {
         let webView = WKWebView(frame: CGRect.zero, configuration: self.webControllerConfig)
         webView.translatesAutoresizingMaskIntoConstraints = false
         webView.navigationDelegate = self
-        
-        self.view.addSubview(webView)
-        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[webView]|",
-                                                                options: [], metrics: nil, views: ["webView": webView]))
-        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[webView]|",
-                                                                options: [], metrics: nil, views: ["webView": webView]))
         return webView
     }()
+    @IBOutlet weak var container: UIView!
     
     required init?(coder aDecoder: NSCoder) {
         let config = WKWebViewConfiguration()
@@ -36,6 +31,12 @@ class SearchViewController: UIViewController {
         
         super.init(coder: aDecoder)
         config.userContentController = eventController.userContentController
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        webView.frame = container.bounds
+        container.addSubview(webView)
     }
     
     func handleEvent(_ event: APIEvent) {

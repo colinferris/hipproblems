@@ -123,7 +123,7 @@
         <!--Select hotel filters-->
         <scene sceneID="bkW-2h-LaA">
             <objects>
-                <viewController id="cIZ-1D-rMf" sceneMemberID="viewController">
+                <viewController id="cIZ-1D-rMf" customClass="FilterSearchViewController" customModule="Hotelzzz" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kd1-wR-CGV"/>
                         <viewControllerLayoutGuide type="bottom" id="mcT-pb-YxW"/>
@@ -131,7 +131,48 @@
                     <view key="view" contentMode="scaleToFill" id="q2P-9E-9Jp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="CC3-BN-H5E">
+                                <rect key="frame" x="14" y="364" width="347" height="31"/>
+                                <connections>
+                                    <action selector="maxValueChanged:" destination="cIZ-1D-rMf" eventType="valueChanged" id="ona-Gg-IUv"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$1000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aj8-5R-b4y">
+                                <rect key="frame" x="309.5" y="414" width="49.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="z9V-Ha-Jyh">
+                                <rect key="frame" x="16" y="616.5" width="21" height="20.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8lB-Uo-LBm">
+                                <rect key="frame" x="16" y="414" width="21" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maximum Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="abq-Zw-9D5">
+                                <rect key="frame" x="129" y="323.5" width="117.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="CC3-BN-H5E" firstAttribute="leading" secondItem="q2P-9E-9Jp" secondAttribute="leadingMargin" id="6rZ-Nr-gSk"/>
+                            <constraint firstItem="aj8-5R-b4y" firstAttribute="trailing" secondItem="CC3-BN-H5E" secondAttribute="trailing" id="AGO-Bc-xoy"/>
+                            <constraint firstItem="CC3-BN-H5E" firstAttribute="trailing" secondItem="q2P-9E-9Jp" secondAttribute="trailingMargin" id="H9I-CG-EVR"/>
+                            <constraint firstItem="abq-Zw-9D5" firstAttribute="centerX" secondItem="q2P-9E-9Jp" secondAttribute="centerX" id="HMh-sf-8G4"/>
+                            <constraint firstItem="abq-Zw-9D5" firstAttribute="centerY" secondItem="q2P-9E-9Jp" secondAttribute="centerY" id="J7e-Ac-6So"/>
+                            <constraint firstItem="8lB-Uo-LBm" firstAttribute="top" secondItem="CC3-BN-H5E" secondAttribute="bottom" constant="20" id="NLc-nX-vrS"/>
+                            <constraint firstItem="aj8-5R-b4y" firstAttribute="top" secondItem="CC3-BN-H5E" secondAttribute="bottom" constant="20" id="RHy-WC-lsU"/>
+                            <constraint firstItem="8lB-Uo-LBm" firstAttribute="leading" secondItem="CC3-BN-H5E" secondAttribute="leading" id="hpD-a9-iec"/>
+                            <constraint firstItem="CC3-BN-H5E" firstAttribute="top" secondItem="abq-Zw-9D5" secondAttribute="bottom" constant="20" id="jtP-fN-u0W"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Select hotel filters" id="Kkd-oh-Evl">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="v7a-jk-OPA">
@@ -139,11 +180,22 @@
                                 <action selector="dismissWithSender:" destination="cIZ-1D-rMf" id="tDU-qd-Lz0"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="pBs-Ku-NRB">
+                            <connections>
+                                <segue destination="oxa-iz-mTm" kind="unwind" unwindAction="unwindToSearchWithSegue:" id="TgJ-dm-Sc0"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="maximumPriceLabel" destination="aj8-5R-b4y" id="lYZ-kb-bzS"/>
+                        <outlet property="minimumPriceLabel" destination="8lB-Uo-LBm" id="T4e-ke-zG0"/>
+                        <outlet property="priceSlider" destination="CC3-BN-H5E" id="rAo-SM-Jhw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rab-A5-nXD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="oxa-iz-mTm" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2478" y="-2"/>
+            <point key="canvasLocation" x="2437.5999999999999" y="-26.53673163418291"/>
         </scene>
         <!--Searching...-->
         <scene sceneID="eSi-zF-Gld">
@@ -370,7 +422,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="093-ns-ATD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1538" y="-2"/>
+            <point key="canvasLocation" x="1537" y="-25"/>
         </scene>
     </scenes>
     <resources>

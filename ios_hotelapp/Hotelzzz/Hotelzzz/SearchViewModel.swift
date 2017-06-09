@@ -7,47 +7,86 @@
 //
 
 import Foundation
+import WebKit
 
-struct SearchViewModel {
-    typealias SortHandler = (HotelOrder) -> Void
-    private let sortBy: SortHandler
+class SearchViewModel: NSObject, WKScriptMessageHandler {
+    typealias APIReadyClosure = () -> Void
+    private let onReady: APIReadyClosure
     
-    typealias EventHandler = (APIEvent) -> Void
-    private let searchEvent: EventHandler
+    typealias HotelSelectedClosure = (Hotel) -> Void
+    private let selectedHotel: HotelSelectedClosure
     
-    init(sortBy: @escaping SortHandler, searchEvent: @escaping EventHandler) {
-        self.sortBy = sortBy
-        self.searchEvent = searchEvent
+    typealias SearchResultsClosure = (Int, PriceRange?) -> Void
+    private let receivedResults: SearchResultsClosure
+    
+    init(onReady: @escaping APIReadyClosure,
+         onHotelSelected: @escaping HotelSelectedClosure,
+         onReceivedResults: @escaping SearchResultsClosure) {
+        
+        self.onReady = onReady
+        self.selectedHotel = onHotelSelected
+        self.receivedResults = onReceivedResults
     }
     
-    func sort(by closure: HotelOrder) {
-        sortBy(closure)
+    func searchContentController() -> WKUserContentController {
+        let contentController = WKUserContentController()
+        
+        contentController.add(self, name: "API_READY")
+        contentController.add(self, name: "HOTEL_API_SEARCH_READY")
+        contentController.add(self, name: "HOTEL_API_RESULTS_READY")
+        contentController.add(self, name: "HOTEL_API_HOTEL_SELECTED")
+        
+        return contentController
     }
     
-    func on(_ name: String, payload: JSONDict) {
-        switch name {
+    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        guard let response = message.body as? JSONDict else {
+            assertionFailure("Unexpected response. Expected \(JSONDict.self) but got \(message.body.self)")
+            return
+        }
+        
+        switch message.name {
         case "API_READY":
-            searchEvent(.ready)
-        case "HOTEL_API_SEARCH_READY":
-            searchEvent(.searchReady)
+            onReady()
+            
         case "HOTEL_API_RESULTS_READY":
-            guard let results = payload["results"] as? [JSONDict], results.count > 0 else {
+            let resultsKey = "results"
+            guard let results = response[resultsKey] as? [JSONDict] else {
+                assertionFailure("Unexpected type for key: \(resultsKey)")
                 return
             }
-            searchEvent(.resultsReady(results.count))
-        case "HOTEL_API_HOTEL_SELECTED":
-            guard let result = payload["result"] as? JSONDict else { return }
-            let hotel: Hotel
             do {
-                hotel = try result.get(result)
+                var hotels: [Hotel] = try results.map{ try $0.get($0) }
+                hotels = hotels.sorted(by: { $0.price < $1.price })
+                
+                var range: PriceRange?
+                if let min = hotels.first?.price, let max = hotels.last?.price {
+                    range = (min, max)
+                }
+                receivedResults(hotels.count, range)
+                
+            } catch {
+                assertionFailure("Failed to parse hotel results")
+            }
+            
+        case "HOTEL_API_HOTEL_SELECTED":
+            let resultKey = "result"
+            guard let result = response[resultKey] as? JSONDict else {
+                assertionFailure("Unexpected type for key: \(resultKey)")
+                return
+            }
+            
+            do {
+                let hotelSelected: Hotel = try result.get(result)
+                selectedHotel(hotelSelected)
             }
             catch {
-                //Add better error handling
-                fatalError("Unable to parse selected hotel")
+                assertionFailure("Mapping Hotel JSON failed with error: \(error)")
             }
-            searchEvent(.selectedHotel(hotel))
+        case "HOTEL_API_SEARCH_READY":
+            break
         default:
-            fatalError("Unhandled message: \(name)")
+            assertionFailure("Unexpected name: \(message.name) payload: \(response)")
         }
     }
 }

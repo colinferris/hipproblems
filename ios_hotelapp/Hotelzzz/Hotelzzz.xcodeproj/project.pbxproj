@@ -8,10 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		E05131801EE75288002B3DB3 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E051317F1EE75288002B3DB3 /* SearchViewModel.swift */; };
+		E05BAF031EE9FC9800B63674 /* SegueHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05BAF021EE9FC9800B63674 /* SegueHandler.swift */; };
 		E0701A281EE102C700217ECA /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0701A271EE102C700217ECA /* Search.swift */; };
 		E0701A2D1EE1053400217ECA /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0701A2C1EE1053400217ECA /* JSON.swift */; };
 		E078857A1EE1E19E007A2261 /* Hotel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07885791EE1E19E007A2261 /* Hotel.swift */; };
-		E0C5A3A41EE37BAF00DBC5D1 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C5A3A31EE37BAF00DBC5D1 /* API.swift */; };
+		E0BADC831EE9CC67008AAE1E /* FilterSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BADC821EE9CC67008AAE1E /* FilterSearchViewController.swift */; };
 		E0C5A3A71EE3CCD100DBC5D1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0C5A3A61EE3CCD100DBC5D1 /* MapKit.framework */; };
 		F222BCD61E81E72500CE0EB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F222BCD51E81E72500CE0EB2 /* AppDelegate.swift */; };
 		F222BCD81E81E72500CE0EB2 /* SearchFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F222BCD71E81E72500CE0EB2 /* SearchFormViewController.swift */; };
@@ -22,7 +23,6 @@
 		F222BCF61E830D4C00CE0EB2 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F222BCF51E830D4C00CE0EB2 /* DatePickerViewController.swift */; };
 		F222BCF81E83175000CE0EB2 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F222BCF71E83175000CE0EB2 /* SearchViewController.swift */; };
 		F222BCFA1E83235F00CE0EB2 /* HotelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F222BCF91E83235F00CE0EB2 /* HotelViewController.swift */; };
-		F27251351E95A60E00222BC8 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27251341E95A60E00222BC8 /* UIViewController+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,10 +37,11 @@
 
 /* Begin PBXFileReference section */
 		E051317F1EE75288002B3DB3 /* SearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		E05BAF021EE9FC9800B63674 /* SegueHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueHandler.swift; sourceTree = "<group>"; };
 		E0701A271EE102C700217ECA /* Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		E0701A2C1EE1053400217ECA /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		E07885791EE1E19E007A2261 /* Hotel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hotel.swift; sourceTree = "<group>"; };
-		E0C5A3A31EE37BAF00DBC5D1 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		E0BADC821EE9CC67008AAE1E /* FilterSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterSearchViewController.swift; sourceTree = "<group>"; };
 		E0C5A3A61EE3CCD100DBC5D1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		F222BCD21E81E72500CE0EB2 /* Hotelzzz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hotelzzz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F222BCD51E81E72500CE0EB2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -55,7 +56,6 @@
 		F222BCF51E830D4C00CE0EB2 /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		F222BCF71E83175000CE0EB2 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		F222BCF91E83235F00CE0EB2 /* HotelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotelViewController.swift; sourceTree = "<group>"; };
-		F27251341E95A60E00222BC8 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,9 +80,9 @@
 		E0701A291EE102CE00217ECA /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E0701A271EE102C700217ECA /* Search.swift */,
 				E051317F1EE75288002B3DB3 /* SearchViewModel.swift */,
 				E07885791EE1E19E007A2261 /* Hotel.swift */,
+				E0701A271EE102C700217ECA /* Search.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -91,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				F222BCF71E83175000CE0EB2 /* SearchViewController.swift */,
+				E0BADC821EE9CC67008AAE1E /* FilterSearchViewController.swift */,
 				F222BCD71E81E72500CE0EB2 /* SearchFormViewController.swift */,
 				F222BCF51E830D4C00CE0EB2 /* DatePickerViewController.swift */,
 				F222BCF91E83235F00CE0EB2 /* HotelViewController.swift */,
@@ -101,8 +102,7 @@
 		E0701A2B1EE104A700217ECA /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				F27251341E95A60E00222BC8 /* UIViewController+Extensions.swift */,
-				E0C5A3A31EE37BAF00DBC5D1 /* API.swift */,
+				E05BAF021EE9FC9800B63674 /* SegueHandler.swift */,
 				E0701A2C1EE1053400217ECA /* JSON.swift */,
 			);
 			name = Utilities;
@@ -269,14 +269,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E05BAF031EE9FC9800B63674 /* SegueHandler.swift in Sources */,
 				E05131801EE75288002B3DB3 /* SearchViewModel.swift in Sources */,
+				E0BADC831EE9CC67008AAE1E /* FilterSearchViewController.swift in Sources */,
 				F222BCD81E81E72500CE0EB2 /* SearchFormViewController.swift in Sources */,
-				E0C5A3A41EE37BAF00DBC5D1 /* API.swift in Sources */,
 				F222BCD61E81E72500CE0EB2 /* AppDelegate.swift in Sources */,
 				F222BCF81E83175000CE0EB2 /* SearchViewController.swift in Sources */,
 				E078857A1EE1E19E007A2261 /* Hotel.swift in Sources */,
 				F222BCF61E830D4C00CE0EB2 /* DatePickerViewController.swift in Sources */,
-				F27251351E95A60E00222BC8 /* UIViewController+Extensions.swift in Sources */,
 				F222BCFA1E83235F00CE0EB2 /* HotelViewController.swift in Sources */,
 				E0701A281EE102C700217ECA /* Search.swift in Sources */,
 				E0701A2D1EE1053400217ECA /* JSON.swift in Sources */,

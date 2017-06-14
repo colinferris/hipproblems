@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="PWI-c0-zZZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="PWI-c0-zZZ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -132,14 +132,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="CC3-BN-H5E">
-                                <rect key="frame" x="14" y="364" width="347" height="31"/>
-                                <connections>
-                                    <action selector="maxValueChanged:" destination="cIZ-1D-rMf" eventType="valueChanged" id="ona-Gg-IUv"/>
-                                </connections>
-                            </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$1000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aj8-5R-b4y">
-                                <rect key="frame" x="309.5" y="414" width="49.5" height="20.5"/>
+                                <rect key="frame" x="309" y="195" width="49.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -148,30 +142,53 @@
                                 <rect key="frame" x="16" y="616.5" width="21" height="20.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8lB-Uo-LBm">
-                                <rect key="frame" x="16" y="414" width="21" height="20.5"/>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="MTh-fL-cgZ">
+                                <rect key="frame" x="14" y="125" width="347" height="31"/>
+                                <connections>
+                                    <action selector="minValueChanged:" destination="cIZ-1D-rMf" eventType="valueChanged" id="n1J-LA-t54"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Minimum Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8KL-qB-vSI">
+                                <rect key="frame" x="16" y="84" width="114" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pob-eB-1Rg">
+                                <rect key="frame" x="338" y="84" width="21" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maximum Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="abq-Zw-9D5">
-                                <rect key="frame" x="129" y="323.5" width="117.5" height="20.5"/>
+                                <rect key="frame" x="16" y="195" width="117.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="CC3-BN-H5E">
+                                <rect key="frame" x="14" y="235.5" width="347" height="31"/>
+                                <connections>
+                                    <action selector="maxValueChanged:" destination="cIZ-1D-rMf" eventType="valueChanged" id="ona-Gg-IUv"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="CC3-BN-H5E" firstAttribute="leading" secondItem="q2P-9E-9Jp" secondAttribute="leadingMargin" id="6rZ-Nr-gSk"/>
-                            <constraint firstItem="aj8-5R-b4y" firstAttribute="trailing" secondItem="CC3-BN-H5E" secondAttribute="trailing" id="AGO-Bc-xoy"/>
-                            <constraint firstItem="CC3-BN-H5E" firstAttribute="trailing" secondItem="q2P-9E-9Jp" secondAttribute="trailingMargin" id="H9I-CG-EVR"/>
-                            <constraint firstItem="abq-Zw-9D5" firstAttribute="centerX" secondItem="q2P-9E-9Jp" secondAttribute="centerX" id="HMh-sf-8G4"/>
-                            <constraint firstItem="abq-Zw-9D5" firstAttribute="centerY" secondItem="q2P-9E-9Jp" secondAttribute="centerY" id="J7e-Ac-6So"/>
-                            <constraint firstItem="8lB-Uo-LBm" firstAttribute="top" secondItem="CC3-BN-H5E" secondAttribute="bottom" constant="20" id="NLc-nX-vrS"/>
-                            <constraint firstItem="aj8-5R-b4y" firstAttribute="top" secondItem="CC3-BN-H5E" secondAttribute="bottom" constant="20" id="RHy-WC-lsU"/>
-                            <constraint firstItem="8lB-Uo-LBm" firstAttribute="leading" secondItem="CC3-BN-H5E" secondAttribute="leading" id="hpD-a9-iec"/>
-                            <constraint firstItem="CC3-BN-H5E" firstAttribute="top" secondItem="abq-Zw-9D5" secondAttribute="bottom" constant="20" id="jtP-fN-u0W"/>
+                            <constraint firstItem="CC3-BN-H5E" firstAttribute="top" secondItem="abq-Zw-9D5" secondAttribute="bottom" constant="20" id="5Qk-4o-uxW"/>
+                            <constraint firstItem="abq-Zw-9D5" firstAttribute="top" secondItem="MTh-fL-cgZ" secondAttribute="bottom" constant="40" id="DgN-6u-ipN"/>
+                            <constraint firstItem="MTh-fL-cgZ" firstAttribute="top" secondItem="8KL-qB-vSI" secondAttribute="bottom" constant="20" id="ERh-t9-DRo"/>
+                            <constraint firstItem="8KL-qB-vSI" firstAttribute="leading" secondItem="q2P-9E-9Jp" secondAttribute="leadingMargin" id="HVv-xp-W3L"/>
+                            <constraint firstItem="abq-Zw-9D5" firstAttribute="leading" secondItem="q2P-9E-9Jp" secondAttribute="leadingMargin" id="Lau-XW-dfy"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="aj8-5R-b4y" secondAttribute="trailing" id="RhV-j8-okm"/>
+                            <constraint firstItem="MTh-fL-cgZ" firstAttribute="trailing" secondItem="q2P-9E-9Jp" secondAttribute="trailingMargin" id="S7b-Dl-UHX"/>
+                            <constraint firstItem="aj8-5R-b4y" firstAttribute="top" secondItem="MTh-fL-cgZ" secondAttribute="bottom" constant="40" id="SCM-03-xLm"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="pob-eB-1Rg" secondAttribute="trailing" id="TiL-DB-oAH"/>
+                            <constraint firstItem="pob-eB-1Rg" firstAttribute="top" secondItem="kd1-wR-CGV" secondAttribute="bottom" constant="20" id="WWz-6D-7m4"/>
+                            <constraint firstItem="8KL-qB-vSI" firstAttribute="top" secondItem="kd1-wR-CGV" secondAttribute="bottom" constant="20" id="XZC-5l-uN0"/>
+                            <constraint firstItem="MTh-fL-cgZ" firstAttribute="leading" secondItem="q2P-9E-9Jp" secondAttribute="leadingMargin" id="oZ2-Qf-cnj"/>
+                            <constraint firstItem="CC3-BN-H5E" firstAttribute="leading" secondItem="q2P-9E-9Jp" secondAttribute="leadingMargin" id="sUM-M3-B8K"/>
+                            <constraint firstItem="CC3-BN-H5E" firstAttribute="trailing" secondItem="q2P-9E-9Jp" secondAttribute="trailingMargin" id="zIs-ex-lQK"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Select hotel filters" id="Kkd-oh-Evl">
@@ -188,8 +205,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="maximumPriceLabel" destination="aj8-5R-b4y" id="lYZ-kb-bzS"/>
-                        <outlet property="minimumPriceLabel" destination="8lB-Uo-LBm" id="T4e-ke-zG0"/>
-                        <outlet property="priceSlider" destination="CC3-BN-H5E" id="rAo-SM-Jhw"/>
+                        <outlet property="maximumPriceSlider" destination="CC3-BN-H5E" id="gp6-TP-cka"/>
+                        <outlet property="minimumPriceLabel" destination="pob-eB-1Rg" id="2TV-vz-Loh"/>
+                        <outlet property="minimumPriceSlider" destination="MTh-fL-cgZ" id="yNa-ax-OVk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rab-A5-nXD" userLabel="First Responder" sceneMemberID="firstResponder"/>

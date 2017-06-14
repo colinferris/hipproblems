@@ -26,6 +26,8 @@ class HotelViewController: UIViewController {
         addressLabel.text = hotel.address
         priceLabel.text = hotel.price.asCurrency()
         
+        self.hotelPhotoView.alpha = 0.0
+        
         do { try loadImage(from: hotel.imageUrl) }
         catch ImageLoadError.badURL(let location) {
             print("Failed to load image from - \(location)")
@@ -43,6 +45,13 @@ class HotelViewController: UIViewController {
             if error == nil, let data = data {
                 DispatchQueue.main.async {
                     self.hotelPhotoView.image = UIImage(data: data)
+                    
+                    UIView.animate(withDuration: 0.2,
+                                   delay: 0.0,
+                                   options: .curveEaseIn,
+                                   animations: {
+                                    self.hotelPhotoView.alpha = 1.0
+                    }, completion: nil)
                 }
             }
             }.resume()

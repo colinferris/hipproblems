@@ -13,14 +13,12 @@ typealias PriceRange = (min: Double, max: Double)
 class FilterSearchViewController: UIViewController {
     @IBOutlet weak var minimumPriceLabel: UILabel!
     @IBOutlet weak var minimumPriceSlider: UISlider!
-    
     @IBOutlet weak var maximumPriceLabel: UILabel!
     @IBOutlet weak var maximumPriceSlider: UISlider!
-    
-    var priceRange: PriceRange!
-    
     typealias CompletionClosure = (PriceRange) -> Void
     var onCompletion: CompletionClosure!
+    
+    var priceRange: PriceRange!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +44,7 @@ class FilterSearchViewController: UIViewController {
     @IBAction func minValueChanged(_ sender: UISlider) {
         // Protects min slider value from being greater than max slider.
         // This prevents an invalid range.
-        guard minimumPriceSlider.value < maximumPriceSlider.value else {
+        guard minimumPriceSlider.value <= maximumPriceSlider.value else {
             minimumPriceSlider.setValue(maximumPriceSlider.value, animated: false)
             return
         }
@@ -58,7 +56,7 @@ class FilterSearchViewController: UIViewController {
     @IBAction func maxValueChanged(_ sender: UISlider) {
         // Protects max slider value from being less than min slider.
         // This prevents an invalid range.
-        guard maximumPriceSlider.value > minimumPriceSlider.value else {
+        guard maximumPriceSlider.value >= minimumPriceSlider.value else {
             maximumPriceSlider.setValue(minimumPriceSlider.value, animated: false)
             return
         }
@@ -68,8 +66,8 @@ class FilterSearchViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        priceRange.min = Double(minimumPriceSlider.value)
-        priceRange.max = Double(maximumPriceSlider.value)
+        priceRange.min = Double(minimumPriceSlider.value.rounded(.down))
+        priceRange.max = Double(maximumPriceSlider.value.rounded(.up))
         
         onCompletion(priceRange)
     }

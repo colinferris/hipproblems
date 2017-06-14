@@ -77,6 +77,21 @@ class SearchViewController: UIViewController {
         present(sortController, animated: true, completion: nil)
     }
     
+    @IBAction func clearSearch(_ sender: UIBarButtonItem) {
+        let clearController = UIAlertController(title: "Are you sure?",
+                                                message: "This will clear all search filters.",
+                                                preferredStyle: .alert)
+        let clearAction = UIAlertAction(title: "Clear", style: .destructive) { (action) in
+            self.priceRange = nil
+            self.selectedHotel = nil
+            self.webView.load(URLRequest(url: SearchViewController.endpointURL))
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        clearController.addAction(clearAction)
+        clearController.addAction(cancelAction)
+        present(clearController, animated: true, completion: nil)
+    }
+    
     private func sort(by order: HotelOrder) {
         let method: String
         switch order {

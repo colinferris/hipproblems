@@ -236,6 +236,12 @@
                                             <action selector="sortHotels:" destination="mfQ-fo-jKR" id="KIE-Ra-Z1A"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="dUr-pB-Wlf"/>
+                                    <barButtonItem title="Clear" id="NSn-yN-I5a" userLabel="Clear">
+                                        <connections>
+                                            <action selector="clearSearch:" destination="mfQ-fo-jKR" id="Sg7-DS-lLO"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="hTu-Er-Ce0"/>
                                 </items>
                             </toolbar>

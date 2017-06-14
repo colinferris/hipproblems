@@ -68,6 +68,12 @@ class SearchViewController: UIViewController {
         sortController.addAction(sortPriceAscending)
         sortController.addAction(sortPriceDescending)
         sortController.addAction(cancelAction)
+        
+        // Causes warning on iPad. Seems to be related to the bug described here –
+        // https://forums.developer.apple.com/thread/53677
+        if let popoverPresentationController = sortController.popoverPresentationController {
+            popoverPresentationController.barButtonItem = sender
+        }
         present(sortController, animated: true, completion: nil)
     }
     

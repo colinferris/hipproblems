@@ -33,10 +33,16 @@ class SearchViewController: UIViewController {
         return webView
     }()
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        webView.frame = container.bounds
+    override func viewDidLoad() {
+        super.viewDidLoad()
         container.addSubview(webView)
+        
+        // configure constraints for web view
+        let height = NSLayoutConstraint(item: webView, attribute: .height, relatedBy: .equal, toItem: container, attribute: .height, multiplier: 1, constant: 0)
+        let width = NSLayoutConstraint(item: webView, attribute: .width, relatedBy: .equal, toItem: container, attribute: .width, multiplier: 1, constant: 0)
+        let top = NSLayoutConstraint(item: webView, attribute: .top, relatedBy: .equal, toItem: container, attribute: .top, multiplier: 1, constant: 0)
+        let leading = NSLayoutConstraint(item: webView, attribute: .leading, relatedBy: .equal, toItem: container, attribute: .leading, multiplier: 1, constant: 0)
+        view.addConstraints([leading, top, height, width])
     }
     
     func search(location: String, dateStart: Date, dateEnd: Date) {
